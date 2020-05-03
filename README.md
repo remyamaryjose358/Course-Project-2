@@ -42,7 +42,7 @@ Have total emissions from PM2.5 decreased in the United States from 1999 to 2008
 
 As we can see from the plot, total emissions have decreased in the US from 1999 to 2008.
 
-plot of plot1.png
+
 Question 2
 
 First we aggregate total emissions from PM2.5 for Baltimore City, Maryland (fips="24510") from 1999 to 2008.
@@ -64,7 +64,7 @@ Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips 
 
 Overall total emissions from PM2.5 have decreased in Baltimore City, Maryland from 1999 to 2008.
 
-plot of plot2.png
+
 Question 3
 
 Using the ggplot2 plotting system,
@@ -88,7 +88,7 @@ Which have seen increases in emissions from 1999–2008?
 
 The point source saw a slight increase overall from 1999-2008. Also note that the point source saw a significant increase until 2005 at which point it decreases again by 2008 to just above the starting values.
 
-plot of plot3.png
+
 Question 4
 
 First we subset coal combustion source factors NEI data.
@@ -118,7 +118,7 @@ Emissions from coal combustion related sources have decreased from 6 * 10^6 to b
 
 Eg. Emissions from coal combustion related sources have decreased by about 1/3 from 1999-2008!
 
-plot of plot4.png
+
 Question 5
 
 First we subset the motor vehicles, which we assume is anything like Motor Vehicle in SCC.Level.Two.
@@ -142,7 +142,7 @@ ggp <- ggplot(baltimoreVehiclesNEI,aes(factor(year),Emissions)) +
 
 print(ggp)
 
-plot of plot5.png
+
 
 How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
 
@@ -174,4 +174,4 @@ Which city has seen greater changes over time in motor vehicle emissions?
 
 Los Angeles County has seen the greatest changes over time in motor vehicle emissions.
 
-plot of plot6.png
+
