@@ -14,16 +14,13 @@ if(!file.exists(archiveFile)) {
 }
 if(!(file.exists("summarySCC_PM25.rds") && 
 	file.exists("Source_Classification_Code.rds"))) { unzip(archiveFile) }
-
-We now load the NEI and SCC data frames from the .rds files.
+	
+# We now load the NEI and SCC data frames from the .rds files.
 
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-Questions
-
-You must address the following questions and tasks in your exploratory analysis. For each question/task you will need to make a single plot. Unless specified, you can use any plotting system in R to make your plot.
-Question 1
+# Question 1
 
 First we'll aggregate the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
 
@@ -43,8 +40,7 @@ Have total emissions from PM2.5 decreased in the United States from 1999 to 2008
 
 As we can see from the plot, total emissions have decreased in the US from 1999 to 2008.
 
-
-Question 2
+# Question 2
 
 First we aggregate total emissions from PM2.5 for Baltimore City, Maryland (fips="24510") from 1999 to 2008.
 
@@ -65,8 +61,7 @@ Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips 
 
 Overall total emissions from PM2.5 have decreased in Baltimore City, Maryland from 1999 to 2008.
 
-
-Question 3
+# Question 3
 
 Using the ggplot2 plotting system,
 
@@ -89,8 +84,7 @@ Which have seen increases in emissions from 1999–2008?
 
 The point source saw a slight increase overall from 1999-2008. Also note that the point source saw a significant increase until 2005 at which point it decreases again by 2008 to just above the starting values.
 
-
-Question 4
+# Question 4
 
 First we subset coal combustion source factors NEI data.
 
@@ -100,8 +94,6 @@ coalRelated <- grepl("coal", SCC$SCC.Level.Four, ignore.case=TRUE)
 coalCombustion <- (combustionRelated & coalRelated)
 combustionSCC <- SCC[coalCombustion,]$SCC
 combustionNEI <- NEI[NEI$SCC %in% combustionSCC,]
-
-Note: The SCC levels go from generic to specific. We assume that coal combustion related SCC records are those where SCC.Level.One contains the substring 'comb' and SCC.Level.Four contains the substring 'coal'.
 
 library(ggplot2)
 
@@ -117,12 +109,9 @@ Across the United States, how have emissions from coal combustion-related source
 
 Emissions from coal combustion related sources have decreased from 6 * 10^6 to below 4 * 10^6 from 1999-2008.
 
-Eg. Emissions from coal combustion related sources have decreased by about 1/3 from 1999-2008!
+# Question 5
 
-
-Question 5
-
-First we subset the motor vehicles, which we assume is anything like Motor Vehicle in SCC.Level.Two.
+First we subset the motor vehicles, which we assume is anything like Motor Vehicle in SCC.Level.Two
 
 vehicles <- grepl("vehicle", SCC$SCC.Level.Two, ignore.case=TRUE)
 vehiclesSCC <- SCC[vehicles,]$SCC
@@ -143,12 +132,11 @@ ggp <- ggplot(baltimoreVehiclesNEI,aes(factor(year),Emissions)) +
 
 print(ggp)
 
-
-
 How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
 
 Emissions from motor vehicle sources have dropped from 1999-2008 in Baltimore City!
-Question 6
+
+# Question 6
 
 Comparing emissions from motor vehicle sources in Baltimore City (fips == "24510") with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"),
 
@@ -174,5 +162,6 @@ print(ggp)
 Which city has seen greater changes over time in motor vehicle emissions?
 
 Los Angeles County has seen the greatest changes over time in motor vehicle emissions.
+
 
 
