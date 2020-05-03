@@ -2,6 +2,7 @@
 In preparation we first ensure the data sets archive is downloaded and extracted.
 
 # Download archive file, if it does not exist
+
 archiveFile <- "NEI_data.zip"
 if(!file.exists(archiveFile)) {
 	archiveURL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
